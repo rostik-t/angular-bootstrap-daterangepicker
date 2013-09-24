@@ -24,6 +24,7 @@ describe('the daterange directive', function () {
 		expect(element.data('daterangepicker').minDate).toBe(false);
 		expect(element.data('daterangepicker').maxDate).toBe(false);
 		expect(element.data('daterangepicker').dateLimit).toBe(false);
+		expect(element.data('daterangepicker').opens).toBe('right');
 		expect(JSON.stringify(element.data('daterangepicker').ranges)).toBe(JSON.stringify({}));
 	});
 
@@ -37,7 +38,8 @@ describe('the daterange directive', function () {
 			maxDate = '2013-09-25',
 			limitAmount = 1,
 			limitUnit = 'week',
-			element = $ngCompile('<input ng-daterange type="daterange" ng-model="dates" format="'+format+'" separator="'+separator+'" min-date="'+minDate+'" max-date="'+maxDate+'" limit="'+limitAmount+' '+limitUnit+'">')($ngRootScope);
+            opens = 'left', 
+			element = $ngCompile('<input ng-daterange type="daterange" ng-model="dates" opens="'+opens+'" format="'+format+'" separator="'+separator+'" min-date="'+minDate+'" max-date="'+maxDate+'" limit="'+limitAmount+' '+limitUnit+'">')($ngRootScope);
 
 		$ngRootScope.dates = { startDate: moment(startDate), endDate: moment(endDate) };
 		$ngRootScope.$apply();
@@ -49,6 +51,7 @@ describe('the daterange directive', function () {
 		expect(element.data('daterangepicker').minDate.format(normalized)).toBe(moment(minDate).format(normalized));
 		expect(element.data('daterangepicker').maxDate.format(normalized)).toBe(moment(maxDate).format(normalized));
 		expect(element.data('daterangepicker').dateLimit.asSeconds()).toBe(moment.duration(limitAmount, limitUnit).asSeconds());
+		expect(element.data('daterangepicker').opens).toBe('left');
 	});
 
 	it('passes on ranges from scope to daterangepicker instance', function () {

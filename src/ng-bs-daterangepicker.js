@@ -18,6 +18,7 @@ angular.module('ngBootstrap', []).directive('ngDaterange', function ($compile, $
 			options.maxDate = $attributes.maxDate && moment($attributes.maxDate);
 			options.dateLimit = $attributes.limit && moment.duration.apply(this, $attributes.limit.split(' ').map(function (elem, index) { return index === 0 && parseInt(elem, 10) || elem; }) );
 			options.ranges = $attributes.ranges && $parse($attributes.ranges)($scope);
+            options.opens = $attributes.opens || 'right';
 
 			function format(date) {
 				return date.format(options.format);
