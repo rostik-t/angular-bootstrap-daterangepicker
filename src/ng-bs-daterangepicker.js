@@ -6,13 +6,11 @@
 (function (angular) {
 'use strict';
 
-angular.module('ngBootstrap', []).directive('input', function ($compile, $parse) {
+angular.module('ngBootstrap', []).directive('ngDaterange', function ($compile, $parse) {
 	return {
-		restrict: 'E',
+		restrict: 'A',
 		require: 'ngModel',
 		link: function ($scope, $element, $attributes, ngModel) {
-			if ($attributes.type !== 'daterange') return;
-
 			var options = {};
 			options.format = $attributes.format || 'YYYY-MM-DD';
 			options.separator = $attributes.separator || ' - ';

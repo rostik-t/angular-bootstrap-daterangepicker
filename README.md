@@ -51,7 +51,7 @@ angular.module('myApp', ['ngBootstrap']);
 and then just add an `input` of type `daterange`:
 
 ```
-<input type="daterange" ng-model="myDateRange">
+<input ng-daterange type="daterange" ng-model="myDateRange">
 ```
 
 The result object `$scope.myDateRange` has a `startDate` and `endDate` properties, which are instances of `moment()`.
@@ -69,6 +69,7 @@ Example with all above features:
 
 ```
 <input
+    ng-daterange 
 	type="daterange"
 	ng-model="dates"
 	min-date="2013-09-10"
