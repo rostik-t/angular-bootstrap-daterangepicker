@@ -6,7 +6,7 @@
 (function (angular) {
 'use strict';
 
-angular.module('ngBootstrap', []).directive('ngDaterange', function ($compile, $parse) {
+angular.module('ngBootstrap', []).directive('ngDaterange', ['$compile', '$parse', function ($compile, $parse) {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -62,6 +62,6 @@ angular.module('ngBootstrap', []).directive('ngDaterange', function ($compile, $
 			});			
 		}
 	};
-});
+}]);
 
 })(angular);
