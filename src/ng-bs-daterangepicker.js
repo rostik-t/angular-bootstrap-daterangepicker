@@ -53,7 +53,7 @@ angular.module('ngBootstrap.dateRangePicker', []).directive('ngDaterange', ['$co
 
 			$element.daterangepicker(options, function(start, end) {
 				$scope.$apply(function () {
-					ngModel.$setViewValue({ startDate: start, endDate: end });
+					ngModel.$setViewValue({ startDate: start.toDate(), endDate: end.toDate() });
 				});
 			});			
 		}
