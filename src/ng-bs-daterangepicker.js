@@ -38,11 +38,6 @@ angular.module('ngBootstrap.dateRangePicker', []).directive('ngDaterange', ['$co
 				return viewValue;
 			});
 
-			ngModel.$render = function () {
-				if (!ngModel.$viewValue || !ngModel.$viewValue.startDate) return;
-				$element.val(formatted(ngModel.$viewValue));
-			};
-
 			$scope.$watch($attributes.ngModel, function (modelValue) {
 				if (!modelValue || (!modelValue.startDate)) {
 					ngModel.$setViewValue({ startDate: moment().startOf('day'), endDate: moment().startOf('day') });
@@ -58,7 +53,6 @@ angular.module('ngBootstrap.dateRangePicker', []).directive('ngDaterange', ['$co
 			$element.daterangepicker(options, function(start, end) {
 				$scope.$apply(function () {
 					ngModel.$setViewValue({ startDate: start, endDate: end });
-					ngModel.$render();
 				});
 			});			
 		}
