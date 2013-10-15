@@ -1,7 +1,7 @@
 describe('the daterange directive', function () {
 	var $ngCompile, $ngRootScope;
 
-	beforeEach(module('ngBootstrap'));
+	beforeEach(module('ngBootstrap.dateRangePicker'));
 
 	beforeEach(inject(function ($compile, $rootScope) {
 		$ngCompile = $compile;
