@@ -3,6 +3,8 @@ ng-bs-daterangepicker
 
 Angular directive for Dan Grossman's [bootstrap-daterangepicker](https://github.com/dangrossman/bootstrap-daterangepicker).
 
+This is a fork of [original Luis Farzati's version](http://luisfarzati.github.io/ng-bs-daterangepicker/) with a couple of incompatible fixes and localization feature.
+
 Demo: http://kojoru.github.io/ng-bs-daterangepicker
 
 Installation
@@ -52,8 +54,6 @@ and then just add any element of type `daterange`:
 
 ```
 <input ng-daterange type="daterange" ng-model="myDateRange">
-  {{myDateRange.beginDate|date}} - {{myDateRange.endDate|date}}
-</input>
 ```
 
 The result object `$scope.myDateRange` has a `startDate` and `endDate` properties, which are instances of `moment()`.

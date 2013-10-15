@@ -1,6 +1,7 @@
 /**
- * @license ng-bs-daterangepicker v0.0.1
- * (c) 2013 Luis Farzati http://github.com/luisfarzati/ng-bs-daterangepicker
+ * @license ng-bs-daterangepicker-plus v0.0.3
+ * (c) 2013 Konstantin Yakushev http://github.com/kojoru/ng-bs-daterangepicker
+ * Originally by Luis Farzati
  * License: MIT
  */
 (function (angular) {
