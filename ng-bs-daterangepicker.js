@@ -1,24 +1,26 @@
 /**
- * @license ng-bs-daterangepicker v0.0.1
- * (c) 2013 Luis Farzati http://github.com/luisfarzati/ng-bs-daterangepicker
+ * @license ng-bs-daterangepicker-plus v0.0.3
+ * (c) 2013 Konstantin Yakushev http://github.com/kojoru/ng-bs-daterangepicker
+ * Originally by Luis Farzati
  * License: MIT
  */
 (function (angular) {
 'use strict';
 
-angular.module('ngBootstrap', []).directive('input', function ($compile) {
+angular.module('ngBootstrap.dateRangePicker', []).directive('ngDaterange', ['$compile', '$parse', function ($compile, $parse) {
 	return {
-		restrict: 'E',
+		restrict: 'A',
 		require: 'ngModel',
 		link: function ($scope, $element, $attributes, ngModel) {
-			if ($attributes.type !== 'daterange') return;
-
 			var options = {};
 			options.format = $attributes.format || 'YYYY-MM-DD';
 			options.separator = $attributes.separator || ' - ';
 			options.minDate = $attributes.minDate && moment($attributes.minDate);
 			options.maxDate = $attributes.maxDate && moment($attributes.maxDate);
 			options.dateLimit = $attributes.limit && moment.duration.apply(this, $attributes.limit.split(' ').map(function (elem, index) { return index === 0 && parseInt(elem, 10) || elem; }) );
+			options.ranges = $attributes.ranges && $parse($attributes.ranges)($scope);
+			options.locale = $attributes.locale && $parse($attributes.locale)($scope);
+            options.opens = $attributes.opens || 'right';
 
 			function format(date) {
 				return date.format(options.format);
@@ -37,18 +39,13 @@ angular.module('ngBootstrap', []).directive('input', function ($compile) {
 				return viewValue;
 			});
 
-			ngModel.$render = function () {
-				if (!ngModel.$viewValue || !ngModel.$viewValue.startDate) return;
-				$element.val(formatted(ngModel.$viewValue));
-			};
-
 			$scope.$watch($attributes.ngModel, function (modelValue) {
 				if (!modelValue || (!modelValue.startDate)) {
-					ngModel.$setViewValue({ startDate: moment().startOf('day'), endDate: moment().startOf('day') });
+					ngModel.$setViewValue({ startDate: moment().startOf('day').toDate(), endDate: moment().startOf('day').toDate() });
 					return;
 				}
-				$element.data('daterangepicker').startDate = modelValue.startDate;
-				$element.data('daterangepicker').endDate = modelValue.endDate;
+				$element.data('daterangepicker').startDate = moment(modelValue.startDate);
+				$element.data('daterangepicker').endDate = moment(modelValue.endDate);
 				$element.data('daterangepicker').updateView();
 				$element.data('daterangepicker').updateCalendars();
 				$element.data('daterangepicker').updateInputText();
@@ -57,11 +54,10 @@ angular.module('ngBootstrap', []).directive('input', function ($compile) {
 			$element.daterangepicker(options, function(start, end) {
 				$scope.$apply(function () {
 					ngModel.$setViewValue({ startDate: start, endDate: end });
-					ngModel.$render();
 				});
 			});			
 		}
 	};
-});
+}]);
 
 })(angular);
