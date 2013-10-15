@@ -3,7 +3,7 @@ ng-bs-daterangepicker
 
 Angular directive for Dan Grossman's [bootstrap-daterangepicker](https://github.com/dangrossman/bootstrap-daterangepicker).
 
-Demo: http://luisfarzati.github.io/ng-bs-daterangepicker
+Demo: http://kojoru.github.io/ng-bs-daterangepicker
 
 Installation
 ------------
@@ -11,13 +11,13 @@ Installation
 Using bower:
 
 ```
-bower install ng-bs-daterangepicker
+bower install ng-bs-daterangepicker-plus
 ```
 
 Using npm:
 
 ```
-npm install ng-bs-daterangepicker
+npm install ng-bs-daterangepicker-plus
 ```
 
 
@@ -42,16 +42,18 @@ to the list above, you should add:
 <script type="text/javascript" src="ng-bs-daterangepicker.js"></script>
 ```
 
-Then, inject `ngBootstrap` in your application module:
+Then, inject `ngBootstrap.dateRangePicker` in your application module:
 
 ```
-angular.module('myApp', ['ngBootstrap']);
+angular.module('myApp', ['ngBootstrap.dateRangePicker']);
 ```
 
-and then just add an `input` of type `daterange`:
+and then just add any element of type `daterange`:
 
 ```
 <input ng-daterange type="daterange" ng-model="myDateRange">
+  {{myDateRange.beginDate|date}} - {{myDateRange.endDate|date}}
+</input>
 ```
 
 The result object `$scope.myDateRange` has a `startDate` and `endDate` properties, which are instances of `moment()`.
@@ -64,6 +66,7 @@ The result object `$scope.myDateRange` has a `startDate` and `endDate` propertie
 * `format`: mapped from `format` attribute;
 * `separator`: mapped from `separator` attribute.
 * `ranges`: mapped from `ranges` attribute. Can be a JSON string or scoped object. (check daterangepicker for formatting)
+* `locale`: mapped from `locale` attribute. Can be a JSON string or scoped object. (check daterangepicker for formatting)
 
 Example with all above features:
 
