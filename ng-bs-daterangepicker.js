@@ -1,5 +1,5 @@
 /**
- * @license ng-bs-daterangepicker-plus v0.0.3
+ * @license ng-bs-daterangepicker-plus v0.1.0
  * (c) 2013 Konstantin Yakushev http://github.com/kojoru/ng-bs-daterangepicker
  * Originally by Luis Farzati
  * License: MIT
@@ -53,7 +53,7 @@ angular.module('ngBootstrap.dateRangePicker', []).directive('ngDaterange', ['$co
 
 			$element.daterangepicker(options, function(start, end) {
 				$scope.$apply(function () {
-					ngModel.$setViewValue({ startDate: start, endDate: end });
+					ngModel.$setViewValue({ startDate: start.toDate(), endDate: end.toDate() });
 				});
 			});			
 		}
