@@ -28,7 +28,7 @@
 	<div>
 		<h2>Limiting range length and possible dates</h2>
 		<pre>&lt;input ng-daterange ng-model="dates3" separator="/" <strong>min-date="2013-09-10" max-date="2013-09-20" limit="1 day"</strong>> <span>{{</span>dates3|json}}</pre>
-		<input ng-daterange ng-model="dates3" separator="/" min-date="2013-09-10" max-date="2013-09-20" limit="1 day" > <code>{{dates3|json}}</code>
+		<input daterange ng-model="dates3" separator="/" min-date="2013-09-10" max-date="2013-09-20" limit="1 day" > <code>{{dates3|json}}</code>
 	</div>
 	<hr>
 	<div>
@@ -43,7 +43,7 @@ function sampleCtrl($scope) {
 		'This month': [moment().startOf('month'), moment().endOf('month')]
 	};
 }</pre>
-		<input ng-daterange ng-model="dates4" ranges="ranges"> <code>{{dates4|json}}</code>
+		<input type="daterange" ng-model="dates4" ranges="ranges"> <code>{{dates4|json}}</code>
 	</div>	
 	<hr>
 	<div>
