@@ -1,7 +1,7 @@
 /**
- * @license ng-bs-daterangepicker-plus v0.1.0
- * (c) 2013 Konstantin Yakushev http://github.com/kojoru/ng-bs-daterangepicker
- * Originally by Luis Farzati
+ * @license angular-bootstrap-daterangepicker v0.1.0
+ * (c) 2013 Konstantin Yakushev http://github.com/kojoru/angular-bootstrap-daterangepicker
+ * Originally by Luis Farzati. See the full list of contributors in the readme
  * License: MIT
  */
 (function (angular) {
@@ -52,16 +52,8 @@ var link = function($scope, $element, $attributes, ngModel, $compile, $parse){
         });
     });
 };
-angular.module('ngBootstrap.dateRangePicker', [])
-    .directive('ngDaterange', ['$compile', '$parse', function ($compile, $parse) {
-        return {
-            restrict: 'A',
-            require: 'ngModel',
-            link: function ($scope, $element, $attributes, ngModel) {
-                link($scope, $element, $attributes, ngModel, $compile, $parse);
-            }
-        };
-}]).directive('daterange',['$compile', '$parse', function ($compile, $parse) {
+angular.module('bootstrap.dateRangePicker', [])
+	.directive('daterange',['$compile', '$parse', function ($compile, $parse) {
         return {
             restrict: 'A',
             require: 'ngModel',

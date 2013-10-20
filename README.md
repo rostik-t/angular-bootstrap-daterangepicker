@@ -1,11 +1,9 @@
-ng-bs-daterangepicker
+angular-bootstrap-daterangepicker
 =====================
 
 Angular directive for Dan Grossman's [bootstrap-daterangepicker](https://github.com/dangrossman/bootstrap-daterangepicker).
 
-This is a fork of [original Luis Farzati's version](http://luisfarzati.github.io/ng-bs-daterangepicker/) with a couple of incompatible fixes and localization feature.
-
-Demo: http://kojoru.github.io/ng-bs-daterangepicker
+Demo and samples: http://kojoru.github.io/angular-bootstrap-daterangepicker
 
 Installation
 ------------
@@ -13,13 +11,13 @@ Installation
 Using bower:
 
 ```
-bower install ng-bs-daterangepicker-plus
+bower install angular-bootstrap-daterangepicker
 ```
 
 Using npm:
 
 ```
-npm install ng-bs-daterangepicker-plus
+npm install angular-bootstrap-daterangepicker
 ```
 
 
@@ -41,49 +39,53 @@ You should already have a bunch of scripts and CSS required for bootstrap-datera
 to the list above, you should add:
 
 ```
-<script type="text/javascript" src="ng-bs-daterangepicker.js"></script>
+<script type="text/javascript" src="angular-bootstrap-daterangepicker.js"></script>
 ```
 
-Then, inject `ngBootstrap.dateRangePicker` in your application module:
+Then, inject `bootstrap.dateRangePicker` in your application module:
 
 ```
-angular.module('myApp', ['ngBootstrap.dateRangePicker']);
+angular.module('myApp', ['bootstrap.dateRangePicker']);
 ```
 
-and then just add any element of type `daterange`:
+and then just add `input` of type `daterange`:
 
 ```
-<input ng-daterange type="daterange" ng-model="myDateRange">
+<input type="daterange" ng-model="myDateRange">
 ```
 
-The result object `$scope.myDateRange` has a `startDate` and `endDate` properties, which are instances of `moment()`.
+or any other element with `daterange` directive (you'll have to take care of date formatting yourself then):
+```
+<button daterange ng-model="mySpanDateRange">{{mySpanDateRange.startDate|date}} - {{mySpanDateRange.endDate|date}}</button>
+```
 
-### Implemented features so far
+The result object `$scope.myDateRange` has a `startDate` and `endDate` properties, which are native javascript dates.
+
+Implemented features so far
+---------------------------
 
 * `startDate`, `endDate`: are taken from the `ng-model` object;
 * `minDate`, `maxDate`: mapped from `min-date` and `max-date` attributes;
-* `dateLimit`: mapped from `limit` attribute;
+* `dateLimit`: mapped from `limit` attribute. Number and unit are specified similarly to `moment.duration()`;
 * `format`: mapped from `format` attribute;
 * `separator`: mapped from `separator` attribute.
-* `ranges`: mapped from `ranges` attribute. Can be a JSON string or scoped object. (check daterangepicker for formatting)
-* `locale`: mapped from `locale` attribute. Can be a JSON string or scoped object. (check daterangepicker for formatting)
+* `ranges`: mapped from `ranges` attribute. JSON string not supported for now, please use a scoped object. (see [example](http://kojoru.github.io/angular-bootstrap-daterangepicker)'s source code)
+* `locale`: mapped from `locale` attribute. Can be a JSON string or scoped object. (see [example](http://kojoru.github.io/angular-bootstrap-daterangepicker)'s source code)
 
-Example with all above features:
-
+Example with some of the above features:
 ```
 <input
-    ng-daterange 
 	type="daterange"
 	ng-model="dates"
 	min-date="2013-09-10"
 	max-date="2013-09-25"
 	limit="3 days"
 	format="L"
-	separator="/"
-	ranges="{'Special Range':{'startDate': '2013-09-2', 'endDate': '2013-09-5'}}">
+	separator="..."
+	locale="{'firstDay': 1}">
 ```
+Some other examples can be found at the project's page: http://kojoru.github.io/angular-bootstrap-daterangepicker
 
-The `limit` attribute lets you specify a number and unit similarly as you would invoke `moment.duration()`.
 
 ### Features to be implemented:
 
@@ -107,6 +109,13 @@ assuming you already have `grunt` installed, otherwise you also need to do:
 npm install -g grunt-cli
 ```
 
+Authors
+-------
+The directive was created by [Luis Farzati](https://github.com/luisfarzati). 
+####Contributors:
 
+* [destos](https://github.com/destos) (Patrick Forringer)
+* [l310](https://github.com/l3l0) (Leszek Prabucki)
+* [kojoru](https://github.com/kojoru) (Konstantin Yakushev)
 
 

@@ -12,23 +12,45 @@
 <script type="text/javascript" src="ng-bs-daterangepicker.js"></script>
 
 <br>
-<div ng-app="ngBootstrap.dateRangePicker" ng-controller="sample" class="container">
+<div ng-app="bootstrap.dateRangePicker" ng-controller="sample" class="container">
+	<h1>angular-bootstrap-daterangepicker <small>0.1.0</small></h1>
+	<a href="https://github.com/kojoru/ng-bs-daterangepicker">source</a> |
+	<a href="http://www.dangrossman.info/2012/08/20/a-date-range-picker-for-twitter-bootstrap/">bootstrap-daterangepicker</a>
+	<hr>
+	
 	<div>
 		<h2>Simple sample</h2>
-		<pre>&lt;input <strong>ng-daterange</strong> ng-model="dates1"> <span>{{</span>dates1|json}}</pre>
-		<input ng-daterange ng-model="dates1"> <code>{{dates1|json}}</code>
+		<pre>&lt;input <strong>type="daterange"</strong> ng-model="dates1"> <span>{{</span>dates1|json}}</pre>
+		<input type="daterange" ng-model="dates1"> <code>{{dates1|json}}</code>
 	</div>
+	<hr>
+	<div>
+		<h2>Simple sample of non-input element</h2>
+		<p>Note: when you don't use input tag you should format the output yourself </p>
+		<pre>&lt;button <strong>daterange</strong> ng-model="buttonDates"> <span>{{</span>buttonDates.startDate|date}} - <span>{{</span>buttonDates.endDate|date}}&lt;/button></pre>
+		<button daterange ng-model="buttonDates">{{buttonDates.startDate|date}} - {{buttonDates.endDate|date}}</button>
+	</div>
+    <hr>
+<input
+	type="daterange"
+	ng-model="dates"
+	min-date="2013-09-10"
+	max-date="2013-09-25"
+	limit="3 days"
+	format="L"
+	separator="..."
+	locale="{'firstDay': 1}">
 	<hr>
 	<div>
 		<h2>Formatting</h2>
 		<pre>&lt;input ng-daterange ng-model="dates2" <strong>format="MMM DD" separator="/"</strong>><span>{{</span>dates2|json}}</pre>
-		<input ng-daterange ng-model="dates2" format="MMM DD" separator="/"> <code>{{dates2|json}}</code>
+		<input type="daterange" ng-model="dates2" format="MMM DD" separator="/"> <code>{{dates2|json}}</code>
 	</div>
 	<hr>
 	<div>
 		<h2>Limiting range length and possible dates</h2>
 		<pre>&lt;input ng-daterange ng-model="dates3" separator="/" <strong>min-date="2013-09-10" max-date="2013-09-20" limit="1 day"</strong>> <span>{{</span>dates3|json}}</pre>
-		<input daterange ng-model="dates3" separator="/" min-date="2013-09-10" max-date="2013-09-20" limit="1 day" > <code>{{dates3|json}}</code>
+		<input type="daterange" ng-model="dates3" separator="/" min-date="2013-09-10" max-date="2013-09-20" limit="1 day" > <code>{{dates3|json}}</code>
 	</div>
 	<hr>
 	<div>
@@ -62,7 +84,7 @@ function sampleCtrl($scope) {
 		firstDay: 1
 	};
 }</pre>
-		<input ng-daterange ng-model="dates5" locale="locale"> <code>{{dates5|json}}</code>
+		<input daterange ng-model="dates5" locale="locale"> <code>{{dates5|json}}</code>
 	</div>	
 </div>
 
